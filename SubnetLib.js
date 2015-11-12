@@ -27,7 +27,8 @@ var SubnetDataTemplate = {
     interestingOctetPosition: 0,
     interestingOctet: 0,
     mask: "",
-    increment: 0
+    increment: 0,
+    possible: false
 };
 
 var Get_SubnetBits = function (subnetsNeeded) {
@@ -103,6 +104,7 @@ var Get_SubnetMask = function (SubnetData) {
                 SubnetData.mask = [255,255,255,octet];
             } else {
                 console.log("Not possible");
+                return SubnetData;
             }
             break;
             
@@ -122,6 +124,7 @@ var Get_SubnetMask = function (SubnetData) {
                 SubnetData.mask = [255,255,255,octet];
             } else {
                 console.log("Not possible");
+                return SubnetData;
             }
             break;
             
@@ -137,6 +140,7 @@ var Get_SubnetMask = function (SubnetData) {
                 SubnetData.mask = [255,255,255,octet];
             } else {
                 console.log("Not possible");
+                return SubnetData;
             }
             break;
             
@@ -144,6 +148,7 @@ var Get_SubnetMask = function (SubnetData) {
             // Nothing
     }
     
+    SubnetData.possible = true;
     SubnetData.increment = Get_Increment(SubnetData.interestingOctet);
     
     return SubnetData;
@@ -208,6 +213,11 @@ button.onclick = function () {
     
     var subnets   = document.getElementById("subnets").value;
     var SubnetData = New_SubnetObject(address, subnets);
+    
+    if (SubnetData.possible !== true) {
+        alert("Cannot fit " + SubnetData.subnetsNeeded + " subnets into a Class " + SubnetData.ipClass + " address.");
+        return -1;
+    }
     
     Set_TextById("ipClass", SubnetData.ipClass);
     Set_TextById("subnetBits", SubnetData.subnetBits);
