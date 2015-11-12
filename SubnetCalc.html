@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+Copyright (C) 2015 Alex York
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <title>Subnet Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .resultHeader { text-align: right }
+        </style>
+    </head>
+    <body>
+        <table id="input">
+            <tr>
+                <td>Address</td>
+                <td><input id="address" maxlength=15></td>
+                <td><button onclick="Set_TextById('address', '')">x</button></td>
+            </tr>
+            <tr>
+                <td>Subnets Needed</td>
+                <td><input id="subnets"></td>
+                <td><button onclick="Set_TextById('subnets', '')">x</button></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button id="calc">Calculate</button></td>
+            </tr>
+        </table>
+        <table id="output">
+            <tr>
+                <td></td>
+                <th style="text-align: center">Results</th>
+            </tr>
+            <tr>
+                <td class="resultHeader">Class:</td>
+                <td  id="ipClass"></td>
+            </tr>
+            <tr>
+                <td class="resultHeader">Bits Needed:</td>
+                <td id="subnetBits"></td>
+            </tr>
+            <tr>
+                <td class="resultHeader">Subnets Available:</td>
+                <td id="subnetsAvailable"></td>
+            </tr>
+            <tr>
+                <td class="resultHeader">Hosts Per Subnet:</td>
+                <td id="hostsPerSubnet"></td>
+            </tr>
+            <tr>
+                <td class="resultHeader">Mask:</td>
+                <td id="mask"></td>
+            </tr>
+            <tr>
+                <td class="resultHeader">Increment:</td>
+                <td id="increment"></td>
+            </tr>
+        </table>
+        <script type="text/javascript" src="SubnetLib.js"></script>
+    </body>
+</html>
